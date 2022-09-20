@@ -93,3 +93,33 @@ classDiagram
 over its lifetime.
 * Composition (`*--`) is a type of relationship where the object is not
 independent over its lifetime.
+
+## Entity Relationship Diagram
+
+A bit more generic than the class diagram. Useful to create a model within
+a domain.
+
+```mermaid
+erDiagram
+  Customer ||--o{ Order : places
+  Order ||--|{ LineItem: contains
+  Customer {
+    String id
+    String name
+  }
+  Order {
+    String id
+    OrderStatus status
+  }
+  LineItem {
+    String code
+    String description
+    int quantity
+    int price
+  }
+```
+
+* `o{` means zero or more. `||` means exactly one. 
+Thus, `Customer ||--o{ Order : places` means a customer can have zero or more
+Orders, and an Order has exactly one Customer.
+* See here for syntax: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram
