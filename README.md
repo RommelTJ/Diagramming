@@ -1,6 +1,6 @@
 # Diagramming
 
-Version: 0.0.1 - 18 Sep 2022
+Version: 0.1.0 - 20 Sep 2022
 
 ## Description
 
