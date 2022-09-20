@@ -56,3 +56,40 @@ sequenceDiagram
   Server ->> Client: Send resource
   deactivate Server
 ```
+
+## Class Diagrams
+
+```mermaid
+classDiagram
+  class Order {
+    +OrderStatus status
+  }
+  class OrderStatus {
+    <<enumeration>>
+    FAILED
+    PENDING
+    PAID
+  }
+  class PaymentProcessor {
+    <<interface>>
+    -String apiKey
+    #connect(String url, JSON header)
+    +processPayment(Order order) OrderStatus
+  }
+  class Customer {
+    +String name
+  }
+  
+  Customer <|-- PrivateCustomer
+  Customer <|-- BusinessCustomer
+  PaymentProcessor <|-- StripePaymentProcessor
+  PaymentProcessor <|-- PaypalPaymentProcessor
+  Order o-- Customer
+  Car *-- Engine
+  
+```
+
+* Aggregation (`o--`) is a type of relationship where it can be independent 
+over its lifetime.
+* Composition (`*--`) is a type of relationship where the object is not
+independent over its lifetime.
